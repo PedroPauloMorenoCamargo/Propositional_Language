@@ -424,6 +424,7 @@ or
     exhibit("The value is %d.", 42);
     ```
   - Output: `The value is 42`.
+  
     ```prop
     exhibit("Logical value: %l", verum);
     ```
