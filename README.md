@@ -100,8 +100,7 @@ In **Prop**, there are two types: **logical/boolean** and **integer**, represent
 
 #### Logical Type
 
-The logical type accepts either the Latin concepts of truth and falsehood, **`verum`** (true) and **`falsum`** (false), or their corresponding integer representations, **`0`** (false) and **`1`** (true).
-
+The logical type accepts either the Latin concepts of truth and falsehood, **`verum`** (true) and **`falsum`** (false).
 #### Integer Type
 
 The integer type supports both positive and negative integer values.
