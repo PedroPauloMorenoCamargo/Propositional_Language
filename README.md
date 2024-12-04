@@ -96,13 +96,16 @@ newline ::= "\n" | "\r\n" ;
 
 ### Types
 
-  In **Prop** there is a logical/boolean and a integer, they are respectively represented as "log" and "int".
+In **Prop**, there are two types: **logical/boolean** and **integer**, represented respectively as `log` and `int`.
 
-#### Logical Type:
-  The logical type accepts either the concepts of truth and lie in latim "verum" and "falsum" or the int values that represent the previous statements 0/1.
+#### Logical Type
 
-#### Integer Type:
-  The integer type can receive either positive or negative integers.
+The logical type accepts either the Latin concepts of truth and falsehood, **`verum`** (true) and **`falsum`** (false), or their corresponding integer representations, **`0`** (false) and **`1`** (true).
+
+#### Integer Type
+
+The integer type supports both positive and negative integer values.
+
 
 ### Operators
 
