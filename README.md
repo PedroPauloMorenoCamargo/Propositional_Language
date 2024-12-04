@@ -61,7 +61,7 @@ expression         ::= sum { ("==" | "<" | ">" ) sum } ;
 
 sum                ::= term { ("+" | "-") term } ;
 
-term               ::= factor { ("*" | "/" | "%") factor } ;
+term               ::= factor { ("*" | "/") factor } ;
 
 factor             ::= ("+" | "-" | "¬"| "!"| "~"| "not") factor
                       | atom ;
@@ -223,6 +223,85 @@ Furthermore, as stated above, the operations `equal`, `greater than`, and `less 
 
 These examples demonstrate how integers are mapped to logical values and how operations are performed consistently across different types.
 
+#### Arithmetical Operators
+
+Arithmetical operations in **Prop** can only be performed on integers to ensure mathematical consistency and triviality. The supported arithmetical operations are listed below:
+
+##### Plus:
+
+- The `plus` operator adds two integer operands and returns their sum. This operation follows standard mathematical rules. The behavior is illustrated in the example below:
+
+  **Examples:**
+  - `3 + 2` → `5`
+  - `-1 + 4` → `3`
+  - `0 + 7` → `7`
+
+- Additionally, it can be represented in code using the following formats:
+  1. `A + B`
+
+##### Minus:
+
+- The `minus` operator subtracts the second integer operand from the first and returns the result. The behavior is illustrated in the example below:
+
+  **Examples:**
+  - `5 - 3` → `2`
+  - `-1 - 4` → `-5`
+  - `7 - 7` → `0`
+
+- Additionally, it can be represented in code using the following formats:
+  1. `A - B`
+
+##### Multiplication:
+
+- The `multiplication` operator multiplies two integer operands and returns their product. The behavior is illustrated in the example below:
+
+  **Examples:**
+  - `3 * 2` → `6`
+  - `-2 * 4` → `-8`
+  - `0 * 5` → `0`
+
+- Additionally, it can be represented in code using the following formats:
+  1. `A * B`
+
+##### Division:
+
+- The `division` operator divides the first integer operand by the second. It performs integer division, truncating any decimal part. If the second operand is `0`, an error is raised. The behavior is illustrated in the example below:
+
+  **Examples:**
+  - `6 / 2` → `3`
+  - `-8 / 4` → `-2`
+  - `7 / 3` → `2` (integer division truncates the decimal part)
+
+- Additionally, it can be represented in code using the following formats:
+  1. `A / B`
+
+##### Unary Plus:
+
+- The `unary plus` operator is used to explicitly indicate that a number is positive. While it does not change the value of the operand, it can improve code readability. The behavior is illustrated in the example below:
+
+  **Examples:**
+  - `+5` → `5`
+  - `+(-3)` → `-3`
+  - `+0` → `0`
+
+- Additionally, it can be represented in code using the following format:
+  1. `+A`
+
+##### Unary Minus:
+
+- The `unary minus` operator negates the value of the operand, effectively multiplying it by `-1`. The behavior is illustrated in the example below:
+
+  **Examples:**
+  - `-5` → `-5`
+  - `-(-3)` → `3`
+  - `-0` → `0`
+
+- Additionally, it can be represented in code using the following format:
+  1. `-A`
+
+#### Characteristics:
+
+As mentioned above, integer operations can only be performed on integer types and will always result in an integer type. This restriction ensures that our propositional logic subset remains trivial, consistent, and complete.
 
 
 
