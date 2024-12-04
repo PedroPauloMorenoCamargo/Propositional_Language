@@ -115,13 +115,26 @@ The integer type supports both positive and negative integer values.
 
 **Biconditional**:
 
-- The `biconditional/XNOR` operator evaluates to true only when both logical operands are equal. This is illustrated in the image below:
+- The `biconditional/XNOR` operator evaluates to **verum** only when both logical operands are equal. This is illustrated in the image below:
 
   ![Biconditional/XNOR Truth Table](/imgs/xnor.jpg)
 
 - Additionally, it can be represented in code using the following formats:
   1. `A <-> B`
   2. `A biconditional B`
+  3. `A ↔ B`
+
+**Implication**:
+
+- The `implication` operator evaluates to **falsum** only when the first operand is true, and the second operand is false. In all other cases, it evaluates to **verum**. This is illustrated in the image below:
+
+  ![Implication Truth Table](/imgs/implication.jpg)
+
+- Additionally, it can be represented in code using the following formats:
+  1. `A -> B`
+  2. `A implies B`
+  3. `A → B`
+
 
 
 
