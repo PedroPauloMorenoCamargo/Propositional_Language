@@ -2,8 +2,6 @@
 
 ## Objective
 
-## Objective
-
 In the subject of Computer Logic, one of the most challenging topics to visualize and understand was the mathematics behind propositional logic. Therefore, when assigned the final project of creating a new language, I decided to develop **Prop**, a propositional language designed to help future students gain a deeper understanding of propositional logic.
 
 ## EBNF
