@@ -1,0 +1,22 @@
+A,B,C : log;
+x = 10 : int;
+
+A = verum;
+
+C = verum;
+
+while (x && A){
+    x = x -1;
+    exhibit("Count: %d",x);
+}
+
+for (B = falsum; !(C->B); B=verum){
+    branch(!(C->B)){
+        exhibit("!(C->B): verum");
+    }
+    else{
+        exhibit("!(C->B): falsum");
+    }
+}
+
+exhibit("!(C->B): %l",!(C->B));

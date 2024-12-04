@@ -1,0 +1,13 @@
+i : int;
+for(i = 0; i < 5; i = i + 1) {
+   exhibit("Iteration: %d", i);
+}
+
+counter : int;
+continueLoop = verum : log;
+for(counter = 0; continueLoop; counter = counter + 1) {
+    exhibit("Counter: %d", counter);
+    branch(counter == 4) {
+        continueLoop = falsum;
+    }
+}

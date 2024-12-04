@@ -1,0 +1,15 @@
+counter = 0: int;
+while(counter < 5) {
+    exhibit("Counter: %d", counter);
+    counter = counter + 1;
+}
+
+isRunning = verum : log;
+x = 10 : int;
+while(isRunning) {
+    exhibit("x = %d", x);
+    x = x - 1;
+    branch(x == 0) {
+        isRunning = falsum;
+    }
+}

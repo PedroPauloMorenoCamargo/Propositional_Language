@@ -1,0 +1,1523 @@
+Grammar
+
+    0 $accept: program $end
+
+    1 program: statement_list
+
+    2 statement_list: ε
+    3               | statement_list statement
+
+    4 statement: print_statement
+    5          | declaration_statement
+    6          | assignment_statement
+    7          | if_statement
+    8          | while_statement
+    9          | for_statement
+   10          | SEMICOLON
+
+   11 print_statement: EXHIBIT LPAREN print_arguments RPAREN SEMICOLON
+
+   12 print_arguments: STRING print_expr_list_opt
+
+   13 print_expr_list_opt: ε
+   14                    | COMMA biconditional print_expr_list
+
+   15 print_expr_list: ε
+   16                | COMMA biconditional print_expr_list
+
+   17 declaration_statement: identifier_decl COLON type SEMICOLON
+
+   18 identifier_decl: IDENTIFIER assign_opt identifier_list
+
+   19 assign_opt: ε
+   20           | ASSIGN biconditional
+
+   21 identifier_list: ε
+   22                | COMMA IDENTIFIER assign_opt identifier_list
+
+   23 type: INT_TYPE
+   24     | LOG_TYPE
+
+   25 assignment_statement: assignment_expression SEMICOLON
+
+   26 if_statement: BRANCH LPAREN biconditional RPAREN block else_opt
+
+   27 else_opt: ε
+   28         | ELSE block
+
+   29 while_statement: WHILE LPAREN biconditional RPAREN block
+
+   30 assignment_expression: IDENTIFIER ASSIGN biconditional
+
+   31 for_statement: FOR LPAREN assignment_expression SEMICOLON biconditional SEMICOLON assignment_expression RPAREN block
+
+   32 block: LBRACE statement_list RBRACE
+
+   33 biconditional: biconditional BICONDITIONAL implication
+   34              | implication
+
+   35 implication: implication IMPLICATION disjunction
+   36            | disjunction
+
+   37 disjunction: disjunction OR conjunction
+   38            | conjunction
+
+   39 conjunction: conjunction AND expression
+   40            | expression
+
+   41 expression: expression EQ sum
+   42           | expression LT sum
+   43           | expression GT sum
+   44           | sum
+
+   45 sum: sum PLUS term
+   46    | sum MINUS term
+   47    | term
+
+   48 term: term TIMES factor
+   49     | term DIVIDE factor
+   50     | factor
+
+   51 factor: PLUS factor
+   52       | MINUS factor
+   53       | NOT factor
+   54       | atom
+
+   55 atom: LPAREN biconditional RPAREN
+   56     | NUMBER
+   57     | VERUM
+   58     | FALSUM
+   59     | IDENTIFIER
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    error (256)
+    EXHIBIT (258) 11
+    BRANCH (259) 26
+    ELSE (260) 28
+    WHILE (261) 29
+    FOR (262) 31
+    INT_TYPE (263) 23
+    LOG_TYPE (264) 24
+    VERUM (265) 57
+    FALSUM (266) 58
+    LPAREN (267) 11 26 29 31 55
+    RPAREN (268) 11 26 29 31 55
+    LBRACE (269) 32
+    RBRACE (270) 32
+    COLON (271) 17
+    SEMICOLON (272) 10 11 17 25 31
+    COMMA (273) 14 16 22
+    EQ (274) 41
+    LT (275) 42
+    GT (276) 43
+    ASSIGN (277) 20 30
+    PLUS (278) 45 51
+    MINUS (279) 46 52
+    TIMES (280) 48
+    DIVIDE (281) 49
+    BICONDITIONAL (282) 33
+    IMPLICATION (283) 35
+    OR (284) 37
+    AND (285) 39
+    NOT (286) 53
+    IDENTIFIER <str> (287) 18 22 30 59
+    STRING <str> (288) 12
+    NUMBER <num> (289) 56
+
+
+Nonterminals, with rules where they appear
+
+    $accept (35)
+        on left: 0
+    program <node> (36)
+        on left: 1
+        on right: 0
+    statement_list <node> (37)
+        on left: 2 3
+        on right: 1 3 32
+    statement <node> (38)
+        on left: 4 5 6 7 8 9 10
+        on right: 3
+    print_statement <node> (39)
+        on left: 11
+        on right: 4
+    print_arguments <node> (40)
+        on left: 12
+        on right: 11
+    print_expr_list_opt <node> (41)
+        on left: 13 14
+        on right: 12
+    print_expr_list <node> (42)
+        on left: 15 16
+        on right: 14 16
+    declaration_statement <node> (43)
+        on left: 17
+        on right: 5
+    identifier_decl <node> (44)
+        on left: 18
+        on right: 17
+    assign_opt <node> (45)
+        on left: 19 20
+        on right: 18 22
+    identifier_list <node> (46)
+        on left: 21 22
+        on right: 18 22
+    type <node> (47)
+        on left: 23 24
+        on right: 17
+    assignment_statement <node> (48)
+        on left: 25
+        on right: 6
+    if_statement <node> (49)
+        on left: 26
+        on right: 7
+    else_opt <node> (50)
+        on left: 27 28
+        on right: 26
+    while_statement <node> (51)
+        on left: 29
+        on right: 8
+    assignment_expression <node> (52)
+        on left: 30
+        on right: 25 31
+    for_statement <node> (53)
+        on left: 31
+        on right: 9
+    block <node> (54)
+        on left: 32
+        on right: 26 28 29 31
+    biconditional <node> (55)
+        on left: 33 34
+        on right: 14 16 20 26 29 30 31 33 55
+    implication <node> (56)
+        on left: 35 36
+        on right: 33 34 35
+    disjunction <node> (57)
+        on left: 37 38
+        on right: 35 36 37
+    conjunction <node> (58)
+        on left: 39 40
+        on right: 37 38 39
+    expression <node> (59)
+        on left: 41 42 43 44
+        on right: 39 40 41 42 43
+    sum <node> (60)
+        on left: 45 46 47
+        on right: 41 42 43 44 45 46
+    term <node> (61)
+        on left: 48 49 50
+        on right: 45 46 47 48 49
+    factor <node> (62)
+        on left: 51 52 53 54
+        on right: 48 49 50 51 52 53
+    atom <node> (63)
+        on left: 55 56 57 58 59
+        on right: 54
+
+
+State 0
+
+    0 $accept: • program $end
+
+    $default  reduce using rule 2 (statement_list)
+
+    program         go to state 1
+    statement_list  go to state 2
+
+
+State 1
+
+    0 $accept: program • $end
+
+    $end  shift, and go to state 3
+
+
+State 2
+
+    1 program: statement_list •
+    3 statement_list: statement_list • statement
+
+    EXHIBIT     shift, and go to state 4
+    BRANCH      shift, and go to state 5
+    WHILE       shift, and go to state 6
+    FOR         shift, and go to state 7
+    SEMICOLON   shift, and go to state 8
+    IDENTIFIER  shift, and go to state 9
+
+    $default  reduce using rule 1 (program)
+
+    statement              go to state 10
+    print_statement        go to state 11
+    declaration_statement  go to state 12
+    identifier_decl        go to state 13
+    assignment_statement   go to state 14
+    if_statement           go to state 15
+    while_statement        go to state 16
+    assignment_expression  go to state 17
+    for_statement          go to state 18
+
+
+State 3
+
+    0 $accept: program $end •
+
+    $default  accept
+
+
+State 4
+
+   11 print_statement: EXHIBIT • LPAREN print_arguments RPAREN SEMICOLON
+
+    LPAREN  shift, and go to state 19
+
+
+State 5
+
+   26 if_statement: BRANCH • LPAREN biconditional RPAREN block else_opt
+
+    LPAREN  shift, and go to state 20
+
+
+State 6
+
+   29 while_statement: WHILE • LPAREN biconditional RPAREN block
+
+    LPAREN  shift, and go to state 21
+
+
+State 7
+
+   31 for_statement: FOR • LPAREN assignment_expression SEMICOLON biconditional SEMICOLON assignment_expression RPAREN block
+
+    LPAREN  shift, and go to state 22
+
+
+State 8
+
+   10 statement: SEMICOLON •
+
+    $default  reduce using rule 10 (statement)
+
+
+State 9
+
+   18 identifier_decl: IDENTIFIER • assign_opt identifier_list
+   30 assignment_expression: IDENTIFIER • ASSIGN biconditional
+
+    ASSIGN  shift, and go to state 23
+
+    $default  reduce using rule 19 (assign_opt)
+
+    assign_opt  go to state 24
+
+
+State 10
+
+    3 statement_list: statement_list statement •
+
+    $default  reduce using rule 3 (statement_list)
+
+
+State 11
+
+    4 statement: print_statement •
+
+    $default  reduce using rule 4 (statement)
+
+
+State 12
+
+    5 statement: declaration_statement •
+
+    $default  reduce using rule 5 (statement)
+
+
+State 13
+
+   17 declaration_statement: identifier_decl • COLON type SEMICOLON
+
+    COLON  shift, and go to state 25
+
+
+State 14
+
+    6 statement: assignment_statement •
+
+    $default  reduce using rule 6 (statement)
+
+
+State 15
+
+    7 statement: if_statement •
+
+    $default  reduce using rule 7 (statement)
+
+
+State 16
+
+    8 statement: while_statement •
+
+    $default  reduce using rule 8 (statement)
+
+
+State 17
+
+   25 assignment_statement: assignment_expression • SEMICOLON
+
+    SEMICOLON  shift, and go to state 26
+
+
+State 18
+
+    9 statement: for_statement •
+
+    $default  reduce using rule 9 (statement)
+
+
+State 19
+
+   11 print_statement: EXHIBIT LPAREN • print_arguments RPAREN SEMICOLON
+
+    STRING  shift, and go to state 27
+
+    print_arguments  go to state 28
+
+
+State 20
+
+   26 if_statement: BRANCH LPAREN • biconditional RPAREN block else_opt
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    biconditional  go to state 37
+    implication    go to state 38
+    disjunction    go to state 39
+    conjunction    go to state 40
+    expression     go to state 41
+    sum            go to state 42
+    term           go to state 43
+    factor         go to state 44
+    atom           go to state 45
+
+
+State 21
+
+   29 while_statement: WHILE LPAREN • biconditional RPAREN block
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    biconditional  go to state 46
+    implication    go to state 38
+    disjunction    go to state 39
+    conjunction    go to state 40
+    expression     go to state 41
+    sum            go to state 42
+    term           go to state 43
+    factor         go to state 44
+    atom           go to state 45
+
+
+State 22
+
+   31 for_statement: FOR LPAREN • assignment_expression SEMICOLON biconditional SEMICOLON assignment_expression RPAREN block
+
+    IDENTIFIER  shift, and go to state 47
+
+    assignment_expression  go to state 48
+
+
+State 23
+
+   20 assign_opt: ASSIGN • biconditional
+   30 assignment_expression: IDENTIFIER ASSIGN • biconditional
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    biconditional  go to state 49
+    implication    go to state 38
+    disjunction    go to state 39
+    conjunction    go to state 40
+    expression     go to state 41
+    sum            go to state 42
+    term           go to state 43
+    factor         go to state 44
+    atom           go to state 45
+
+
+State 24
+
+   18 identifier_decl: IDENTIFIER assign_opt • identifier_list
+
+    COMMA  shift, and go to state 50
+
+    $default  reduce using rule 21 (identifier_list)
+
+    identifier_list  go to state 51
+
+
+State 25
+
+   17 declaration_statement: identifier_decl COLON • type SEMICOLON
+
+    INT_TYPE  shift, and go to state 52
+    LOG_TYPE  shift, and go to state 53
+
+    type  go to state 54
+
+
+State 26
+
+   25 assignment_statement: assignment_expression SEMICOLON •
+
+    $default  reduce using rule 25 (assignment_statement)
+
+
+State 27
+
+   12 print_arguments: STRING • print_expr_list_opt
+
+    COMMA  shift, and go to state 55
+
+    $default  reduce using rule 13 (print_expr_list_opt)
+
+    print_expr_list_opt  go to state 56
+
+
+State 28
+
+   11 print_statement: EXHIBIT LPAREN print_arguments • RPAREN SEMICOLON
+
+    RPAREN  shift, and go to state 57
+
+
+State 29
+
+   57 atom: VERUM •
+
+    $default  reduce using rule 57 (atom)
+
+
+State 30
+
+   58 atom: FALSUM •
+
+    $default  reduce using rule 58 (atom)
+
+
+State 31
+
+   55 atom: LPAREN • biconditional RPAREN
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    biconditional  go to state 58
+    implication    go to state 38
+    disjunction    go to state 39
+    conjunction    go to state 40
+    expression     go to state 41
+    sum            go to state 42
+    term           go to state 43
+    factor         go to state 44
+    atom           go to state 45
+
+
+State 32
+
+   51 factor: PLUS • factor
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    factor  go to state 59
+    atom    go to state 45
+
+
+State 33
+
+   52 factor: MINUS • factor
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    factor  go to state 60
+    atom    go to state 45
+
+
+State 34
+
+   53 factor: NOT • factor
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    factor  go to state 61
+    atom    go to state 45
+
+
+State 35
+
+   59 atom: IDENTIFIER •
+
+    $default  reduce using rule 59 (atom)
+
+
+State 36
+
+   56 atom: NUMBER •
+
+    $default  reduce using rule 56 (atom)
+
+
+State 37
+
+   26 if_statement: BRANCH LPAREN biconditional • RPAREN block else_opt
+   33 biconditional: biconditional • BICONDITIONAL implication
+
+    RPAREN         shift, and go to state 62
+    BICONDITIONAL  shift, and go to state 63
+
+
+State 38
+
+   34 biconditional: implication •
+   35 implication: implication • IMPLICATION disjunction
+
+    IMPLICATION  shift, and go to state 64
+
+    $default  reduce using rule 34 (biconditional)
+
+
+State 39
+
+   36 implication: disjunction •
+   37 disjunction: disjunction • OR conjunction
+
+    OR  shift, and go to state 65
+
+    $default  reduce using rule 36 (implication)
+
+
+State 40
+
+   38 disjunction: conjunction •
+   39 conjunction: conjunction • AND expression
+
+    AND  shift, and go to state 66
+
+    $default  reduce using rule 38 (disjunction)
+
+
+State 41
+
+   40 conjunction: expression •
+   41 expression: expression • EQ sum
+   42           | expression • LT sum
+   43           | expression • GT sum
+
+    EQ  shift, and go to state 67
+    LT  shift, and go to state 68
+    GT  shift, and go to state 69
+
+    $default  reduce using rule 40 (conjunction)
+
+
+State 42
+
+   44 expression: sum •
+   45 sum: sum • PLUS term
+   46    | sum • MINUS term
+
+    PLUS   shift, and go to state 70
+    MINUS  shift, and go to state 71
+
+    $default  reduce using rule 44 (expression)
+
+
+State 43
+
+   47 sum: term •
+   48 term: term • TIMES factor
+   49     | term • DIVIDE factor
+
+    TIMES   shift, and go to state 72
+    DIVIDE  shift, and go to state 73
+
+    $default  reduce using rule 47 (sum)
+
+
+State 44
+
+   50 term: factor •
+
+    $default  reduce using rule 50 (term)
+
+
+State 45
+
+   54 factor: atom •
+
+    $default  reduce using rule 54 (factor)
+
+
+State 46
+
+   29 while_statement: WHILE LPAREN biconditional • RPAREN block
+   33 biconditional: biconditional • BICONDITIONAL implication
+
+    RPAREN         shift, and go to state 74
+    BICONDITIONAL  shift, and go to state 63
+
+
+State 47
+
+   30 assignment_expression: IDENTIFIER • ASSIGN biconditional
+
+    ASSIGN  shift, and go to state 75
+
+
+State 48
+
+   31 for_statement: FOR LPAREN assignment_expression • SEMICOLON biconditional SEMICOLON assignment_expression RPAREN block
+
+    SEMICOLON  shift, and go to state 76
+
+
+State 49
+
+   20 assign_opt: ASSIGN biconditional •
+   30 assignment_expression: IDENTIFIER ASSIGN biconditional •
+   33 biconditional: biconditional • BICONDITIONAL implication
+
+    BICONDITIONAL  shift, and go to state 63
+
+    SEMICOLON  reduce using rule 30 (assignment_expression)
+    $default   reduce using rule 20 (assign_opt)
+
+
+State 50
+
+   22 identifier_list: COMMA • IDENTIFIER assign_opt identifier_list
+
+    IDENTIFIER  shift, and go to state 77
+
+
+State 51
+
+   18 identifier_decl: IDENTIFIER assign_opt identifier_list •
+
+    $default  reduce using rule 18 (identifier_decl)
+
+
+State 52
+
+   23 type: INT_TYPE •
+
+    $default  reduce using rule 23 (type)
+
+
+State 53
+
+   24 type: LOG_TYPE •
+
+    $default  reduce using rule 24 (type)
+
+
+State 54
+
+   17 declaration_statement: identifier_decl COLON type • SEMICOLON
+
+    SEMICOLON  shift, and go to state 78
+
+
+State 55
+
+   14 print_expr_list_opt: COMMA • biconditional print_expr_list
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    biconditional  go to state 79
+    implication    go to state 38
+    disjunction    go to state 39
+    conjunction    go to state 40
+    expression     go to state 41
+    sum            go to state 42
+    term           go to state 43
+    factor         go to state 44
+    atom           go to state 45
+
+
+State 56
+
+   12 print_arguments: STRING print_expr_list_opt •
+
+    $default  reduce using rule 12 (print_arguments)
+
+
+State 57
+
+   11 print_statement: EXHIBIT LPAREN print_arguments RPAREN • SEMICOLON
+
+    SEMICOLON  shift, and go to state 80
+
+
+State 58
+
+   33 biconditional: biconditional • BICONDITIONAL implication
+   55 atom: LPAREN biconditional • RPAREN
+
+    RPAREN         shift, and go to state 81
+    BICONDITIONAL  shift, and go to state 63
+
+
+State 59
+
+   51 factor: PLUS factor •
+
+    $default  reduce using rule 51 (factor)
+
+
+State 60
+
+   52 factor: MINUS factor •
+
+    $default  reduce using rule 52 (factor)
+
+
+State 61
+
+   53 factor: NOT factor •
+
+    $default  reduce using rule 53 (factor)
+
+
+State 62
+
+   26 if_statement: BRANCH LPAREN biconditional RPAREN • block else_opt
+
+    LBRACE  shift, and go to state 82
+
+    block  go to state 83
+
+
+State 63
+
+   33 biconditional: biconditional BICONDITIONAL • implication
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    implication  go to state 84
+    disjunction  go to state 39
+    conjunction  go to state 40
+    expression   go to state 41
+    sum          go to state 42
+    term         go to state 43
+    factor       go to state 44
+    atom         go to state 45
+
+
+State 64
+
+   35 implication: implication IMPLICATION • disjunction
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    disjunction  go to state 85
+    conjunction  go to state 40
+    expression   go to state 41
+    sum          go to state 42
+    term         go to state 43
+    factor       go to state 44
+    atom         go to state 45
+
+
+State 65
+
+   37 disjunction: disjunction OR • conjunction
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    conjunction  go to state 86
+    expression   go to state 41
+    sum          go to state 42
+    term         go to state 43
+    factor       go to state 44
+    atom         go to state 45
+
+
+State 66
+
+   39 conjunction: conjunction AND • expression
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    expression  go to state 87
+    sum         go to state 42
+    term        go to state 43
+    factor      go to state 44
+    atom        go to state 45
+
+
+State 67
+
+   41 expression: expression EQ • sum
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    sum     go to state 88
+    term    go to state 43
+    factor  go to state 44
+    atom    go to state 45
+
+
+State 68
+
+   42 expression: expression LT • sum
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    sum     go to state 89
+    term    go to state 43
+    factor  go to state 44
+    atom    go to state 45
+
+
+State 69
+
+   43 expression: expression GT • sum
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    sum     go to state 90
+    term    go to state 43
+    factor  go to state 44
+    atom    go to state 45
+
+
+State 70
+
+   45 sum: sum PLUS • term
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    term    go to state 91
+    factor  go to state 44
+    atom    go to state 45
+
+
+State 71
+
+   46 sum: sum MINUS • term
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    term    go to state 92
+    factor  go to state 44
+    atom    go to state 45
+
+
+State 72
+
+   48 term: term TIMES • factor
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    factor  go to state 93
+    atom    go to state 45
+
+
+State 73
+
+   49 term: term DIVIDE • factor
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    factor  go to state 94
+    atom    go to state 45
+
+
+State 74
+
+   29 while_statement: WHILE LPAREN biconditional RPAREN • block
+
+    LBRACE  shift, and go to state 82
+
+    block  go to state 95
+
+
+State 75
+
+   30 assignment_expression: IDENTIFIER ASSIGN • biconditional
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    biconditional  go to state 96
+    implication    go to state 38
+    disjunction    go to state 39
+    conjunction    go to state 40
+    expression     go to state 41
+    sum            go to state 42
+    term           go to state 43
+    factor         go to state 44
+    atom           go to state 45
+
+
+State 76
+
+   31 for_statement: FOR LPAREN assignment_expression SEMICOLON • biconditional SEMICOLON assignment_expression RPAREN block
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    biconditional  go to state 97
+    implication    go to state 38
+    disjunction    go to state 39
+    conjunction    go to state 40
+    expression     go to state 41
+    sum            go to state 42
+    term           go to state 43
+    factor         go to state 44
+    atom           go to state 45
+
+
+State 77
+
+   22 identifier_list: COMMA IDENTIFIER • assign_opt identifier_list
+
+    ASSIGN  shift, and go to state 98
+
+    $default  reduce using rule 19 (assign_opt)
+
+    assign_opt  go to state 99
+
+
+State 78
+
+   17 declaration_statement: identifier_decl COLON type SEMICOLON •
+
+    $default  reduce using rule 17 (declaration_statement)
+
+
+State 79
+
+   14 print_expr_list_opt: COMMA biconditional • print_expr_list
+   33 biconditional: biconditional • BICONDITIONAL implication
+
+    COMMA          shift, and go to state 100
+    BICONDITIONAL  shift, and go to state 63
+
+    $default  reduce using rule 15 (print_expr_list)
+
+    print_expr_list  go to state 101
+
+
+State 80
+
+   11 print_statement: EXHIBIT LPAREN print_arguments RPAREN SEMICOLON •
+
+    $default  reduce using rule 11 (print_statement)
+
+
+State 81
+
+   55 atom: LPAREN biconditional RPAREN •
+
+    $default  reduce using rule 55 (atom)
+
+
+State 82
+
+   32 block: LBRACE • statement_list RBRACE
+
+    $default  reduce using rule 2 (statement_list)
+
+    statement_list  go to state 102
+
+
+State 83
+
+   26 if_statement: BRANCH LPAREN biconditional RPAREN block • else_opt
+
+    ELSE  shift, and go to state 103
+
+    $default  reduce using rule 27 (else_opt)
+
+    else_opt  go to state 104
+
+
+State 84
+
+   33 biconditional: biconditional BICONDITIONAL implication •
+   35 implication: implication • IMPLICATION disjunction
+
+    IMPLICATION  shift, and go to state 64
+
+    $default  reduce using rule 33 (biconditional)
+
+
+State 85
+
+   35 implication: implication IMPLICATION disjunction •
+   37 disjunction: disjunction • OR conjunction
+
+    OR  shift, and go to state 65
+
+    $default  reduce using rule 35 (implication)
+
+
+State 86
+
+   37 disjunction: disjunction OR conjunction •
+   39 conjunction: conjunction • AND expression
+
+    AND  shift, and go to state 66
+
+    $default  reduce using rule 37 (disjunction)
+
+
+State 87
+
+   39 conjunction: conjunction AND expression •
+   41 expression: expression • EQ sum
+   42           | expression • LT sum
+   43           | expression • GT sum
+
+    EQ  shift, and go to state 67
+    LT  shift, and go to state 68
+    GT  shift, and go to state 69
+
+    $default  reduce using rule 39 (conjunction)
+
+
+State 88
+
+   41 expression: expression EQ sum •
+   45 sum: sum • PLUS term
+   46    | sum • MINUS term
+
+    PLUS   shift, and go to state 70
+    MINUS  shift, and go to state 71
+
+    $default  reduce using rule 41 (expression)
+
+
+State 89
+
+   42 expression: expression LT sum •
+   45 sum: sum • PLUS term
+   46    | sum • MINUS term
+
+    PLUS   shift, and go to state 70
+    MINUS  shift, and go to state 71
+
+    $default  reduce using rule 42 (expression)
+
+
+State 90
+
+   43 expression: expression GT sum •
+   45 sum: sum • PLUS term
+   46    | sum • MINUS term
+
+    PLUS   shift, and go to state 70
+    MINUS  shift, and go to state 71
+
+    $default  reduce using rule 43 (expression)
+
+
+State 91
+
+   45 sum: sum PLUS term •
+   48 term: term • TIMES factor
+   49     | term • DIVIDE factor
+
+    TIMES   shift, and go to state 72
+    DIVIDE  shift, and go to state 73
+
+    $default  reduce using rule 45 (sum)
+
+
+State 92
+
+   46 sum: sum MINUS term •
+   48 term: term • TIMES factor
+   49     | term • DIVIDE factor
+
+    TIMES   shift, and go to state 72
+    DIVIDE  shift, and go to state 73
+
+    $default  reduce using rule 46 (sum)
+
+
+State 93
+
+   48 term: term TIMES factor •
+
+    $default  reduce using rule 48 (term)
+
+
+State 94
+
+   49 term: term DIVIDE factor •
+
+    $default  reduce using rule 49 (term)
+
+
+State 95
+
+   29 while_statement: WHILE LPAREN biconditional RPAREN block •
+
+    $default  reduce using rule 29 (while_statement)
+
+
+State 96
+
+   30 assignment_expression: IDENTIFIER ASSIGN biconditional •
+   33 biconditional: biconditional • BICONDITIONAL implication
+
+    BICONDITIONAL  shift, and go to state 63
+
+    $default  reduce using rule 30 (assignment_expression)
+
+
+State 97
+
+   31 for_statement: FOR LPAREN assignment_expression SEMICOLON biconditional • SEMICOLON assignment_expression RPAREN block
+   33 biconditional: biconditional • BICONDITIONAL implication
+
+    SEMICOLON      shift, and go to state 105
+    BICONDITIONAL  shift, and go to state 63
+
+
+State 98
+
+   20 assign_opt: ASSIGN • biconditional
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    biconditional  go to state 106
+    implication    go to state 38
+    disjunction    go to state 39
+    conjunction    go to state 40
+    expression     go to state 41
+    sum            go to state 42
+    term           go to state 43
+    factor         go to state 44
+    atom           go to state 45
+
+
+State 99
+
+   22 identifier_list: COMMA IDENTIFIER assign_opt • identifier_list
+
+    COMMA  shift, and go to state 50
+
+    $default  reduce using rule 21 (identifier_list)
+
+    identifier_list  go to state 107
+
+
+State 100
+
+   16 print_expr_list: COMMA • biconditional print_expr_list
+
+    VERUM       shift, and go to state 29
+    FALSUM      shift, and go to state 30
+    LPAREN      shift, and go to state 31
+    PLUS        shift, and go to state 32
+    MINUS       shift, and go to state 33
+    NOT         shift, and go to state 34
+    IDENTIFIER  shift, and go to state 35
+    NUMBER      shift, and go to state 36
+
+    biconditional  go to state 108
+    implication    go to state 38
+    disjunction    go to state 39
+    conjunction    go to state 40
+    expression     go to state 41
+    sum            go to state 42
+    term           go to state 43
+    factor         go to state 44
+    atom           go to state 45
+
+
+State 101
+
+   14 print_expr_list_opt: COMMA biconditional print_expr_list •
+
+    $default  reduce using rule 14 (print_expr_list_opt)
+
+
+State 102
+
+    3 statement_list: statement_list • statement
+   32 block: LBRACE statement_list • RBRACE
+
+    EXHIBIT     shift, and go to state 4
+    BRANCH      shift, and go to state 5
+    WHILE       shift, and go to state 6
+    FOR         shift, and go to state 7
+    RBRACE      shift, and go to state 109
+    SEMICOLON   shift, and go to state 8
+    IDENTIFIER  shift, and go to state 9
+
+    statement              go to state 10
+    print_statement        go to state 11
+    declaration_statement  go to state 12
+    identifier_decl        go to state 13
+    assignment_statement   go to state 14
+    if_statement           go to state 15
+    while_statement        go to state 16
+    assignment_expression  go to state 17
+    for_statement          go to state 18
+
+
+State 103
+
+   28 else_opt: ELSE • block
+
+    LBRACE  shift, and go to state 82
+
+    block  go to state 110
+
+
+State 104
+
+   26 if_statement: BRANCH LPAREN biconditional RPAREN block else_opt •
+
+    $default  reduce using rule 26 (if_statement)
+
+
+State 105
+
+   31 for_statement: FOR LPAREN assignment_expression SEMICOLON biconditional SEMICOLON • assignment_expression RPAREN block
+
+    IDENTIFIER  shift, and go to state 47
+
+    assignment_expression  go to state 111
+
+
+State 106
+
+   20 assign_opt: ASSIGN biconditional •
+   33 biconditional: biconditional • BICONDITIONAL implication
+
+    BICONDITIONAL  shift, and go to state 63
+
+    $default  reduce using rule 20 (assign_opt)
+
+
+State 107
+
+   22 identifier_list: COMMA IDENTIFIER assign_opt identifier_list •
+
+    $default  reduce using rule 22 (identifier_list)
+
+
+State 108
+
+   16 print_expr_list: COMMA biconditional • print_expr_list
+   33 biconditional: biconditional • BICONDITIONAL implication
+
+    COMMA          shift, and go to state 100
+    BICONDITIONAL  shift, and go to state 63
+
+    $default  reduce using rule 15 (print_expr_list)
+
+    print_expr_list  go to state 112
+
+
+State 109
+
+   32 block: LBRACE statement_list RBRACE •
+
+    $default  reduce using rule 32 (block)
+
+
+State 110
+
+   28 else_opt: ELSE block •
+
+    $default  reduce using rule 28 (else_opt)
+
+
+State 111
+
+   31 for_statement: FOR LPAREN assignment_expression SEMICOLON biconditional SEMICOLON assignment_expression • RPAREN block
+
+    RPAREN  shift, and go to state 113
+
+
+State 112
+
+   16 print_expr_list: COMMA biconditional print_expr_list •
+
+    $default  reduce using rule 16 (print_expr_list)
+
+
+State 113
+
+   31 for_statement: FOR LPAREN assignment_expression SEMICOLON biconditional SEMICOLON assignment_expression RPAREN • block
+
+    LBRACE  shift, and go to state 82
+
+    block  go to state 114
+
+
+State 114
+
+   31 for_statement: FOR LPAREN assignment_expression SEMICOLON biconditional SEMICOLON assignment_expression RPAREN block •
+
+    $default  reduce using rule 31 (for_statement)

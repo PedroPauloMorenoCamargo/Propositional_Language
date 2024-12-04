@@ -1,0 +1,67 @@
+// 1. Declarações Simples
+x = 10: int;          // Declaração de um inteiro inicializado
+y: int;               // Declaração de um inteiro sem inicialização
+z = verum: log;       // Declaração de um lógico inicializado como `verum`
+w: log;               // Declaração de um lógico sem inicialização
+
+// Exibindo os valores iniciais
+exhibit("x = %d, z = %l\n", x, z); // Saída: x = 10, z = verum
+
+// Exemplos Inválidos
+// x = "texto": int;       // Erro: tipo incompatível (string atribuída a um inteiro)
+// w = 42: log;            // Erro: tipo incompatível (inteiro atribuído a um lógico)
+// z = 1 + verum: log;     // Erro: operação inválida entre tipos lógico e inteiro
+
+// 2. Atribuições Pós-Declaração
+y = x + 5;            // Atribuindo valor ao inteiro `y`
+w = falsum;           // Atribuindo valor ao lógico `w`
+
+// Exibindo os valores após a atribuição
+exhibit("y = %d, w = %l\n", y, w); // Saída: y = 15, w = falsum
+
+// Exemplos Inválidos
+// y = z + x;             // Erro: operação inválida entre tipos lógico e inteiro
+// w = not 10;            // Erro: operador `not` aplicado a um inteiro
+// y = ;                  // Erro: atribuição incompleta (valor faltando)
+
+// 3. Declarações com Expressões
+a = (x + y) * 2: int; // Inicialização com uma expressão aritmética
+b = z and w: log;     // Inicialização com uma expressão lógica
+
+// Exibindo os valores das expressões
+exhibit("a = %d, b = %l\n", a, b); // Saída: a = 50, b = falsum
+
+// Exemplos Inválidos
+// a = (x + y) * : int;      // Erro: expressão aritmética incompleta
+// b = z and 10: log;        // Erro: operador lógico aplicado a um inteiro
+// c = (a < z): int;         // Erro: comparação inválida entre tipos inteiro e lógico
+
+// 4. Declarações de Variáveis Dependentes
+m = a / 2: int;       // Depende de `a`
+n = not b: log;       // Depende de `b`
+
+// Exibindo os valores dependentes
+exhibit("m = %d, n = %l\n", m, n); // Saída: m = 25, n = verum
+
+// Exemplos Inválidos
+// p = q + 10: int;         // Erro: `q` não declarado
+// n = not x: log;          // Erro: operador `not` aplicado a um inteiro
+// m = a / 0: int;          // Erro: divisão por zero
+
+// 5. Declarações Múltiplas
+p1 = 5, q1 = 10, r1: int;      // Múltiplas declarações de inteiros
+s1 = verum, t1 = falsum: log; // Múltiplas declarações de lógicos
+
+// Exibindo os valores das declarações múltiplas
+exhibit("p1 = %d, q1 1= %d, r1 = %d\n", p1, q1, r1); // Saída esperada: p1 = 5, q1 = 10, r1 = 0 (não inicializado)
+exhibit("s1 = %l, t1 = %l\n", s1, t1);           // Saída esperada: s1 = verum, t1 = falsum
+
+
+// Exemplos Inválidos
+// a = 10, b = "texto": int;   // Erro: tipo incompatível (string em uma variável inteira)
+// d = 1, e = falsum: log;     // Erro: tipo incompatível (inteiro em uma variável lógica)
+// f = 5, g = verum: int, log; // Erro: mistura inválida de tipos na mesma linha
+
+
+
+

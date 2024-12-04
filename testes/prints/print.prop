@@ -1,0 +1,35 @@
+// 1. Prints Simples
+x = 10: int;                 // Declaração de um inteiro
+y = 20: int;                 // Outro inteiro
+z = verum: log;              // Declaração de um lógico
+w = falsum: log;             // Outro lógico
+
+exhibit("x = %d\n", x);       // Saída esperada: x = 10
+exhibit("z = %l\n", z);       // Saída esperada: z = verum
+
+// 2. Prints com Múltiplos Valores
+exhibit("x = %d, y = %d\n", x, y);  // Saída esperada: x = 10, y = 20
+exhibit("z = %l, w = %l\n", z, w);  // Saída esperada: z = verum, w = falsum
+
+// 3. Prints com Expressões
+a = 15: int;                // Declaração de um inteiro
+b = a + x: int;             // Inicialização com expressão
+c = a > x: log;             // Comparação lógica
+
+exhibit("a + x = %d\n", b);  // Saída esperada: a + x = 25
+exhibit("a > x: %l\n", c);   // Saída esperada: a > x: verum
+
+// 4. Prints com Strings
+exhibit("Hello, World!\n");  // Saída esperada: Hello, World!
+exhibit("Multi-line:\nLine 1\nLine 2\n"); // Saída esperada:
+// Multi-line:
+// Line 1
+// Line 2
+
+// 5. Prints com Características Inválidas (Comentados para Demonstração)
+// exhibit("x = %d\n");            // Erro: Falta o argumento para %d
+// exhibit("z = %l\n", x);         // Erro: Tipo incompatível (esperava lógico, recebeu inteiro)
+// exhibit("x = %d, y = %l\n", x); // Erro: Falta o segundo argumento para %l
+// exhibit("Invalid = %s\n", x);   // Erro: %s não é suportado
+// exhibit("Mismatched = %d\n", z); // Erro: Tipo incompatível (esperava inteiro, recebeu lógico)
+

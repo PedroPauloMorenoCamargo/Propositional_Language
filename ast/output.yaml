@@ -1,0 +1,129 @@
+AST:
+  - type: PROGRAM
+    children:
+      - type: DECLARATION_STATEMENT
+        children:
+          - type: IDENTIFIER_DECL
+            children:
+              - type: IDENTIFIER
+                value: A
+              - type: IDENTIFIER
+                value: B
+              - type: IDENTIFIER
+                value: C
+          - type: TYPE
+            value: log
+      - type: DECLARATION_STATEMENT
+        children:
+          - type: IDENTIFIER_DECL
+            children:
+              - type: IDENTIFIER
+                value: x
+              - type: NUMBER
+                value: 10
+          - type: TYPE
+            value: int
+      - type: ASSIGNMENT_STATEMENT
+        children:
+          - type: IDENTIFIER
+            value: A
+          - type: BOOLEAN
+            value: verum
+      - type: ASSIGNMENT_STATEMENT
+        children:
+          - type: IDENTIFIER
+            value: C
+          - type: BOOLEAN
+            value: verum
+      - type: WHILE_STATEMENT
+        children:
+          - type: BINARY_OP
+            value: and
+            children:
+              - type: IDENTIFIER
+                value: x
+              - type: IDENTIFIER
+                value: A
+          - type: BLOCK
+            children:
+              - type: ASSIGNMENT_STATEMENT
+                children:
+                  - type: IDENTIFIER
+                    value: x
+                  - type: BINARY_OP
+                    value: minus
+                    children:
+                      - type: IDENTIFIER
+                        value: x
+                      - type: NUMBER
+                        value: 1
+              - type: EXHIBIT
+                children:
+                  - type: STRING
+                    value: "Count: %d"
+                  - type: IDENTIFIER
+                    value: x
+      - type: FOR_STATEMENT
+        children:
+          - type: ASSIGNMENT_STATEMENT
+            children:
+              - type: IDENTIFIER
+                value: B
+              - type: BOOLEAN
+                value: falsum
+          - type: UNARY_OP
+            value: not
+            children:
+              - type: BINARY_OP
+                value: implication
+                children:
+                  - type: IDENTIFIER
+                    value: C
+                  - type: IDENTIFIER
+                    value: B
+          - type: ASSIGNMENT_STATEMENT
+            children:
+              - type: IDENTIFIER
+                value: B
+              - type: BOOLEAN
+                value: verum
+          - type: BLOCK
+            children:
+              - type: IF_STATEMENT
+                children:
+                  - type: UNARY_OP
+                    value: not
+                    children:
+                      - type: BINARY_OP
+                        value: implication
+                        children:
+                          - type: IDENTIFIER
+                            value: C
+                          - type: IDENTIFIER
+                            value: B
+                  - type: BLOCK
+                    children:
+                      - type: EXHIBIT
+                        children:
+                          - type: STRING
+                            value: "!(C->B): verum"
+                  - type: BLOCK
+                    children:
+                      - type: EXHIBIT
+                        children:
+                          - type: STRING
+                            value: "!(C->B): falsum"
+      - type: EXHIBIT
+        children:
+          - type: STRING
+            value: "!(C->B): %l"
+          - type: UNARY_OP
+            value: not
+            children:
+              - type: BINARY_OP
+                value: implication
+                children:
+                  - type: IDENTIFIER
+                    value: C
+                  - type: IDENTIFIER
+                    value: B

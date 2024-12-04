@@ -1,0 +1,4 @@
+exhibit("Hello, World!");
+exhibit("The value is %d.", 42);
+exhibit("Logical value: %l", verum);
+exhibit("Values: %d, %l, %d", 10, falsum, 20);

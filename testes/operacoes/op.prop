@@ -1,0 +1,91 @@
+// Demonstração de Operações na Linguagem
+
+// 1. Declaração e Atribuição de Variáveis
+x, y, z : int; // Declaração múltipla
+a = verum: log; // Declaração de variável lógica com valor inicial verdadeiro
+b = falsum: log; // Declaração de variável lógica com valor inicial falso
+x = 10; // Atribuição de valor a 'x'
+y = 20; // Atribuição de valor a 'y'
+z = 30; // Atribuição de valor a 'z'
+
+// Declaração e inicialização de variáveis para resultados
+sum : int;
+difference : int;
+product : int;
+quotient : int;
+isEqual : log;
+isLessThan : log;
+isGreaterThan : log;
+andResult : log;
+orResult : log;
+notResult : log;
+biconditionalResult : log;
+implicationResult : log;
+logicalOrderTest1 : log;
+logicalOrderTest2 : log;
+logicalWithArithmetic : log;
+
+// 2. Operações Aritméticas
+sum = x + y; // Soma: 10 + 20 = 30
+difference = z - x; // Subtração: 30 - 10 = 20
+product = x * y; // Multiplicação: 10 * 20 = 200
+quotient = z / y; // Divisão: 30 / 20 = 1 (resultado inteiro)
+
+// 3. Operadores Relacionais
+isEqual = (x == y); // Igualdade: 10 == 20 → falsum
+isLessThan = (x < y); // Menor que: 10 < 20 → verum
+isGreaterThan = (z > y); // Maior que: 30 > 20 → verum
+
+// 4. Operadores Lógicos
+andResult = a and b; // Conjunção lógica: verum AND falsum → falsum
+orResult = a or b; // Disjunção lógica: verum OR falsum → verum
+notResult = not a; // Negação lógica: NOT verum → falsum
+
+// 5. Operadores Bicondicional e Implicação
+biconditionalResult = (x < y) <-> (z > y); // Bicondicional: (10 < 20) <-> (30 > 20) → verum
+implicationResult = (x > y) -> (z > y); // Implicação: (10 > 20) -> (30 > 20) → verum (porque antecedente é falso)
+
+// 6. Testes de Ordem de Operações Lógicas
+logicalOrderTest1 = not a or b and a; 
+// Ordem: NOT primeiro, depois AND, por último OR.
+// Resultado: (NOT verum) OR (falsum AND verum) → falsum OR falsum → falsum
+
+logicalOrderTest2 = a and (b or not a); 
+// Ordem alterada pelos parênteses: (b OR (NOT a)) avaliado primeiro.
+// Resultado: verum AND (falsum OR falsum) → verum AND falsum → falsum
+
+// 7. Ordem envolvendo Lógicos e Aritméticos
+logicalWithArithmetic = (x + y > z) and (z - y < x);
+// Primeiro, as operações aritméticas são resolvidas:
+// (x + y > z): (10 + 20 > 30) → falsum
+// (z - y < x): (30 - 20 < 10) → falsum
+// Depois, o AND é avaliado: falsum AND falsum → falsum
+
+// 8. Impressão de Resultados
+exhibit("Operações Aritméticas:\n");
+exhibit("Soma: %d", sum);
+exhibit("Subtração: %d", difference);
+exhibit("Multiplicação: %d", product);
+exhibit("Divisão: %d", quotient);
+
+exhibit("\nOperadores Relacionais:\n");
+exhibit("Igualdade: %l", isEqual);
+exhibit("Menor que: %l", isLessThan);
+exhibit("Maior que: %l", isGreaterThan);
+
+exhibit("\nOperadores Lógicos:\n");
+exhibit("AND: %l", andResult);
+exhibit("OR: %l", orResult);
+exhibit("NOT: %l", notResult);
+
+exhibit("\nBicondicional e Implicação:\n");
+exhibit("Bicondicional: %l", biconditionalResult);
+exhibit("Implicação: %l", implicationResult);
+
+exhibit("\nTeste de Ordem de Operações Lógicas:\n");
+exhibit("NOT antes de AND e OR (not a or b and a): %l", logicalOrderTest1);
+exhibit("Alterando a ordem com parênteses (a and (b or not a)): %l", logicalOrderTest2);
+
+exhibit("\nTeste de Ordem Lógicos e Aritméticos:\n");
+exhibit("Aritmética antes de lógica ((x + y > z) and (z - y < x)): %l", logicalWithArithmetic);
+

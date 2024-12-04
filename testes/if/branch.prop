@@ -1,0 +1,18 @@
+isTrue = verum : log;
+branch(isTrue) {
+    exhibit("Condition is true!");
+}
+
+isFalse = falsum : log;
+branch(isFalse) {
+    exhibit("Condition is false!");
+} else {
+    exhibit("Condition is true!");
+}
+
+x = 5, y = 10 : int;
+branch(x < y) {
+    exhibit("x is less than y.");
+} else {
+    exhibit("x is not less than y.");
+}
