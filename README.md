@@ -115,7 +115,7 @@ The integer type supports both positive and negative integer values.
 
 **Biconditional**:
 
-  - The biconditional operator evaluates to true only when both logical operands are equal. This is illustrated in the image below:
+  - The **biconditional**/**XNOR** operator evaluates to true only when both logical operands are equal. This is illustrated in the image below:
   
   *[]*
 
