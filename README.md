@@ -2,11 +2,15 @@
 
 ## Objective
 
-In the subject of Computer Logic one of the main topics that was difficult to actually visualize and understand was the mathematics of propositional math. Hence, when tasked with the final project of creating a brand new language I had the idea of making a propositional language to help future students to gain better insight on propositional math.
+## Objective
+
+In the subject of Computer Logic, one of the most challenging topics to visualize and understand was the mathematics behind propositional logic. Therefore, when assigned the final project of creating a new language, I decided to develop **Prop**, a propositional language designed to help future students gain a deeper understanding of propositional logic.
 
 ## EBNF
 
-The syntax of the language is represented below in the extended Backus–Naur form notation:
+The syntax of **Prop** is defined below using Extended Backus–Naur Form (EBNF):
+
+
 
 ```ebnf
 program            ::= statement_list ";" ;
@@ -88,5 +92,36 @@ character2 ::= ? any character except newline ? ;
 
 newline ::= "\n" | "\r\n" ;
 
-
 ```
+
+## Language Characteristics
+
+### Types
+
+In **Prop** there is a logical/boolean and a integer, they are respectively represented as "log" and "int".
+
+#### Logical Type
+The logical type accepts either the concepts of truth and lie in latim "verum" and "falsum" or the int values that represent the previous statements 0/1.
+
+#### Integer Type
+The integer type can receive either positive or negative integers.
+
+### Operators
+
+In **Prop** there is two different types of operators the logical and arithmetical.
+
+#### Logical Operators
+
+**Biconditional**:
+
+- The biconditional operator evaluates to true only when both logical operands are equal. This is illustrated in the image below:
+  
+  *[]*
+
+- Additionally, it can be represented in code using the following formats:
+  1. `A <-> B`
+  2. `A biconditional B`
+
+
+
+
