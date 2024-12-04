@@ -415,32 +415,31 @@ or
 
 **Examples:**
 1. Standalone string:
-   ```prop
-   exhibit("Hello, World!");
+    ```prop
+    exhibit("Hello, World!");
     ```
   - Output: `Hello, World!`
 2. String with arguments:
-  ```prop
-  exhibit("The value is %d.", 42);
-   ```
+    ```prop
+    exhibit("The value is %d.", 42);
+    ```
   - Output: `The value is 42`.
     ```prop
     exhibit("Logical value: %l", verum);
-   ```
-  - Output: Logical value: verum
-  - Output: `Values: 10, falsum, 20`
+    ```
+  - Output: `Logical value: verum`
 4. Multiple arguments:
-   ```prop
+    ```prop
     exhibit("Values: %d, %l, %d", 10, falsum, 20);
-  ```
+    ```
   - Output: `Values: 10, falsum, 20`
 
 **Invalid Examples:**
 
 1. Mismatched types:
-  ```prop
-  exhibit("Value: %d", verum);
-  ```
+    ```prop
+    exhibit("Value: %d", verum);
+   ```
 2. Mismatched number of arguments:
     ```prop
     exhibit("Values: %d, %l", 10);
