@@ -175,9 +175,7 @@ The integer type supports both positive and negative integer values.
 
 - Additionally, it can be represented in code using the following formats:
   1. `A == B`
-  2. `A equals B`
-  3. `A = B`
-
+  
 ---
 
 **Greater Than**:
@@ -187,8 +185,6 @@ The integer type supports both positive and negative integer values.
 
 - Additionally, it can be represented in code using the following formats:
   1. `A > B`
-  2. `A greater B`
-  3. `A >: B`
 
 ---
 
@@ -198,8 +194,6 @@ The integer type supports both positive and negative integer values.
 
 - Additionally, it can be represented in code using the following formats:
   1. `A < B`
-  2. `A less B`
-  3. `A <: B`
 
 
 ##### Characteristics:
