@@ -399,6 +399,7 @@ As seen above variable assignment follows the syntax below:
 **Invalid Example:**
 - `x = verum : int;` (error: `verum` is a logical value and cannot be assigned to an integer variable)
 
+---
 
 ### Terminal Exhibition
 
