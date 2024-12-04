@@ -113,7 +113,7 @@ The integer type supports both positive and negative integer values.
 
 #### Logical Operators
 
-- **Biconditional**:
+**Biconditional**:
 
 - The `biconditional/XNOR` operator evaluates to **verum** only when both logical operands are equal. This is illustrated in the image below:
 
@@ -134,6 +134,67 @@ The integer type supports both positive and negative integer values.
   1. `A -> B`
   2. `A implies B`
   3. `A → B`
+
+**Disjunction**:
+
+- The `disjunction` operator evaluates to **verum** if at least one of the operands is **verum**. This is commonly referred to as the "logical OR" operator. The behavior of this operator is illustrated in the image below:
+
+  ![Disjunction Truth Table](/imgs/disjunction.png)
+
+- Additionally, it can be represented in code using the following formats:
+  1. `A || B`
+  2. `A or B`
+  3. `A ∨ B`
+
+**Conjunction**:
+
+- The `conjunction` operator evaluates to **verum** only if both operands are **verum**. This is commonly referred to as the "logical AND" operator. The behavior of this operator is illustrated in the image below:
+
+  ![Conjunction Truth Table](/imgs/conjunction.png)
+
+- Additionally, it can be represented in code using the following formats:
+  1. `A && B`
+  2. `A and B`
+  3. `A ∧ B`
+
+**Negation**:
+
+- The `negation` operator inverts the logical value of its operand. If the operand is **verum**, the result is **falsum**, and vice versa. This is commonly referred to as the "logical NOT" operator. The behavior of this operator is illustrated in the image below:
+
+  ![Negation Truth Table](/imgs/negation.png)
+
+- Additionally, it can be represented in code using the following formats:
+  1. `!A`
+  2. `not A`
+  3. `¬A`
+  4. `~A`
+
+##### Characteristics:
+
+Logical operators in **Prop** can be used in binary operations involving `integer-integer`, `boolean-boolean`, and `integer-boolean` combinations. For unary operations, a single `integer` or `boolean` value can be used.
+
+Before the operation occurs, any integer value that is not `0` is mapped to **verum**, and `0` is mapped to **falsum**. The output of the operation is always mapped to the logical type. This mapping ensures consistency, triviality and simplifies logical operations.
+
+1. **Binary Operations:**
+   - `1 && 0` → **falsum** (1 is mapped to **verum**, 0 to **falsum**, result is **falsum**)
+   - `verum || falsum` → **verum** 
+   - `1 -> 0` → **falsum** (1 maps to **verum**, 0 to **falsum**, implication is **falsum**)
+   - `1 <-> verum` → **verum** (1 maps to **verum**, operands are equal)
+
+2. **Unary Operations:**
+   - `!1` → **falsum** (1 maps to **verum**, negation yields **falsum**)
+   - `not falsum` → **verum** 
+   - `¬0` → **verum** (0 maps to **falsum**, negation yields **verum**)
+
+3. **Mixed Integer-Boolean Operations:**
+   - `1 && verum` → **verum** 
+   - `0 || falsum` → **falsum** 
+   - `verum -> 0` → **falsum** 
+
+These examples demonstrate how integers are mapped to logical values and how operations are performed consistently across different types.
+
+
+
 
 
 
