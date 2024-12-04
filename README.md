@@ -597,14 +597,14 @@ The `for` command is used to iterate a block of code. It requires an initial ass
 
 For flux control follows the syntax below:
 
-`for(<assignment>,<condition>,<assignment>){<statement1>,<statement2>,...}`
+`for(<assignment>;<condition>;<assignment>){<statement1>,<statement2>,...}`
 
 **Examples:**
 
 1. **Basic for loop:**
     ```prop
     i : int;
-    for(i = 0, i < 5, i = i + 1) {
+    for(i = 0; i < 5; i = i + 1) {
        exhibit("Iteration: %d", i);
     }
     ```
@@ -621,7 +621,7 @@ For flux control follows the syntax below:
     ```prop
     counter : int;
     continueLoop = verum : log;
-    for(counter = 0, continueLoop, counter = counter + 1) {
+    for(counter = 0; continueLoop; counter = counter + 1) {
         exhibit("Counter: %d", counter);
         branch(counter == 4) {
             continueLoop = falsum;
@@ -644,7 +644,7 @@ For flux control follows the syntax below:
 1. **Condition is not a logical value:**
     ```prop
     i : int;
-    for(i = 0, i, i = i + 1) {
+    for(i = 0; i; i = i + 1) {
         exhibit("Invalid condition.");  // Error: `i` is not a logical variable
     }
     ```
