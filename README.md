@@ -115,13 +115,14 @@ The integer type supports both positive and negative integer values.
 
 **Biconditional**:
 
-  - The `biconditional/XNOR` operator evaluates to true only when both logical operands are equal. This is illustrated in the image below:
-  
-  *[/imgs/xnor.jpg]*
+- The `biconditional/XNOR` operator evaluates to true only when both logical operands are equal. This is illustrated in the image below:
 
-  - Additionally, it can be represented in code using the following formats:
-    1. `A <-> B`
-    2. `A biconditional B`
+  ![Biconditional/XNOR Truth Table](/imgs/xnor.jpg)
+
+- Additionally, it can be represented in code using the following formats:
+  1. `A <-> B`
+  2. `A biconditional B`
+
 
 
 
