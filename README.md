@@ -424,7 +424,7 @@ or
     exhibit("The value is %d.", 42);
     ```
   - Output: `The value is 42`.
-  
+
     ```prop
     exhibit("Logical value: %l", verum);
     ```
@@ -449,6 +449,61 @@ or
 
 ### Branch Flux Control
 
+For flux control, the `branch` command evaluates a condition and, based on the result, executes a specific block of code. The condition in a branch must evaluate to a logical variable.
+
+Branch flux control follows the syntax below:
+
+
+`branch(<condition>){<statement1>,<statement2>,...}`
+
+or 
+
+`branch(<condition>){<statement1>,<statement2>,...} else {<statement3>,<statement4>,...}`
+
+
+**Examples:**
+
+1. **Branch without `else`:**
+    ```prop
+    isTrue = verum : log;
+    branch(isTrue) {
+        exhibit("Condition is true!");
+    }
+    ```
+  - Output: `Condition is true!`
+2. Branch with else:
+    ```prop
+    isFalse = falsum : log;
+    branch(isFalse) {
+        exhibit("Condition is false!");
+    } else {
+        exhibit("Condition is true!");
+    }
+    ```
+  - Output: `Condition is true!`
+
+3. Branch with a logical expression:
+    ```prop
+    x = 5, y = 10 : int;
+    branch(x < y) {
+        exhibit("x is less than y.");
+    } else {
+        exhibit("x is not less than y.");
+    }
+    ```
+  - Output: `x is less than y`.
+
+**Invalid Examples:**
+
+1. Condition is not a logical value:
+    ```prop
+    x = 5 : int;
+    branch(x) {
+        exhibit("Invalid condition.");
+    }
+
+    ```
+    
 ### While
 
 ### For
