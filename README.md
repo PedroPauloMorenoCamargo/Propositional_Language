@@ -307,21 +307,39 @@ As mentioned above, integer operations can only be performed on integer types an
 
 The precedence of operations in **Prop** is defined as follows, from the highest to the lowest level:
 
-| Precedence Level | Type               | Operators                                              |
-|-------------------|--------------------|-------------------------------------------------------|
-| 1 (Highest)       | Atom               | variables, integers, logical types ("verum" or falsum), parenthesis |
-| 2                 | Unary              | unary plus, unary minus, negation |
-| 3                 | Multiplication/Division |  |
-| 4                 | Addition/Subtraction |                                        |
-| 5                 | Relational/Equality |equal, greater than, lesser than                        |
-| 6                 | Conjunction        | |
-| 7                 | Disjunction        ||
-| 8                 | Implication        ||
-| 9 (Lowest)        | Biconditional      ||
+| Precedence Level | Type                  | Operators                                             |
+|-------------------|-----------------------|------------------------------------------------------|
+| 1 (Highest)       | Atom                  | Variables, integers, logical types (`verum`, `falsum`), parentheses `()` |
+| 2                 | Unary                 | Unary plus `+`, unary minus `-`, negation (`¬`, `!`, `~`, `not`) |
+| 3                 | Multiplication/Division | `*`, `/`                                            |
+| 4                 | Addition/Subtraction  | `+`, `-`                                            |
+| 5                 | Relational/Equality   | Equal `==`, greater than `>`, lesser than `<`       |
+| 6                 | Conjunction           | `∧`, `&&`, `and`                                    |
+| 7                 | Disjunction           | `∨`, `||`, `or`                                     |
+| 8                 | Implication           | `->`, `→`, `implies`                                |
+| 9 (Lowest)        | Biconditional         | `↔`, `<->`, `biconditional`                         |
 
-### Notes:
-- Operators listed within the same precedence level are evaluated from left to right (associative).
-- Parentheses `()` can always be used to override default precedence and enforce specific evaluation order.
+This precedence ensures that operations are evaluated in a logical and consistent order, reflecting their importance and function in propositional logic and arithmetic.
+
+### Example
+
+Consider the following expression:
+
+`(3 + 5) * -2 > 4 ∨ verum ∧ falsum`
+
+**Step-by-step evaluation:**
+1. Evaluate the **atom** `(3 + 5)` → `8`.
+2. Apply the **unary minus** to `-2` → `-2`.
+3. Perform **multiplication**: `8 * -2` → `-16`.
+4. Compare using **relational/equality**: `-16 > 4` → `falsum`.
+5. Evaluate the **conjunction**: `verum ∧ falsum` → `falsum`.
+6. Evaluate the **disjunction**: `falsum ∨ falsum` → `falsum`.
+
+**Result:** The final value of the expression is **falsum**.
+
+Parentheses can be used to override precedence, ensuring that specific parts of an expression are evaluated first.
+
+
 
 
 
