@@ -175,7 +175,7 @@ The integer type supports both positive and negative integer values.
 
 - Additionally, it can be represented in code using the following formats:
   1. `A == B`
-  
+
 ---
 
 **Greater Than**:
@@ -202,7 +202,7 @@ Logical operators in **Prop** can be used in binary operations involving `intege
 
 Before the operation occurs, any integer value that is not `0` is mapped to **verum**, and `0` is mapped to **falsum**. The output of the operation is always mapped to the logical type. This mapping ensures consistency, triviality and simplifies logical operations.
 
-Furthermore, as stated above, the operations **equal**, **greater than**, and **less than** can only be used with integer operands. If a boolean value is provided, an error will be raised.
+Furthermore, as stated above, the operations `equal`, `greater than`, and `less than` can only be used with integer operands. If a boolean value is provided, an error will be raised.
 
 
 1. **Binary Operations:**
