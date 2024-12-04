@@ -551,7 +551,7 @@ While flux control follows the syntax below:
 
 2. **Using a logical condition:**
     ```prop
-    isRunning = verum : verum;
+    isRunning = verum : log;
     x = 10 : int;
     while(isRunning) {
         exhibit("x = %d", x);
