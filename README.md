@@ -113,7 +113,7 @@ The integer type supports both positive and negative integer values.
 
 #### Logical Operators
 
-**Biconditional**:
+- **Biconditional**:
 
 - The `biconditional/XNOR` operator evaluates to **verum** only when both logical operands are equal. This is illustrated in the image below:
 
