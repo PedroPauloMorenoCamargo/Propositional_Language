@@ -371,15 +371,81 @@ Multiple variables can be declared on the same line, either without initial valu
 **Note:**
 - In a multiple variable declaration it's possible to assign variables and in the same line declare variables without assigning them..
 
-
-
-#### Multiple Variable Declaration
-
-Multiple variables can be declared with no initial values or with assignments as well. Furthermore, in the same line you can't add two variable types, see the syntax below:
-
 ### Variable Assignment
 
+As seen above variable assignment follows the syntax below:
+
+`<id> = <value>;`
+
+**Note:**
+- The variable assigned must correspond to the type declared.
+
+
+**Note:**
+- The value assigned to a variable must correspond to its declared type.
+
+**Examples:**
+- `x = 10 : int;` (assigns the integer value `10` to the variable `x`)
+- `isTrue = verum : log;` (assigns the logical value `verum` to the variable `isTrue`)
+- `x = 5;` (reassigns a new value to the already declared variable `x`)
+- `isTrue = falsum;` (updates the value of the logical variable `isTrue` to `falsum`)
+
+**Invalid Example:**
+- `x = verum : int;` (error: `verum` is a logical value and cannot be assigned to an integer variable)
+
+
 ### Terminal Exhibition
+
+Information can be displayed on the console using terminal exhibition. The output can be either a standalone string or a string with arguments embedded within it (e.g., `%d` for integers and `%l` for logical types).
+
+Terminal exhibition follows the syntax below:
+
+
+
+`exhibit(<String>);`
+
+or 
+
+`exhibit(<String>, <arg1>,<arg2>,<arg3>,...,<argN>);`
+
+
+**Note:**
+- The arguments embedded in the string must correspond to the same types as the arguments passed to the `exhibit` function.
+- The number of embedded arguments in the string must match the number of arguments passed to the `exhibit` function.
+
+**Examples:**
+1. Standalone string:
+   ```prop
+   exhibit("Hello, World!");
+    ```
+  - Output: `Hello, World!`
+2. String with arguments:
+  ```prop
+  exhibit("The value is %d.", 42);
+   ```
+  - Output: `The value is 42`.
+    ```prop
+    exhibit("Logical value: %l", verum);
+   ```
+  - Output: Logical value: verum
+  - Output: `Values: 10, falsum, 20`
+4. Multiple arguments:
+   ```prop
+    exhibit("Values: %d, %l, %d", 10, falsum, 20);
+  ```
+  - Output: `Values: 10, falsum, 20`
+
+**Invalid Examples:**
+
+1. Mismatched types:
+  ```prop
+  exhibit("Value: %d", verum);
+  ```
+2. Mismatched number of arguments:
+    ```prop
+    exhibit("Values: %d, %l", 10);
+    ```
+
 
 ### Branch Flux Control
 
