@@ -383,6 +383,7 @@ As seen above variable assignment follows the syntax below:
 
 **Note:**
 - The value assigned to a variable must correspond to its declared type.
+- A variable can only be assigned after a variable with the same id has been declared.
 
 **Examples:**
 - `x = 10 : int;` (assigns the integer value `10` to the variable `x`)
@@ -503,11 +504,143 @@ or
     }
 
     ```
-    
+
 ### While
+
+### While Flux Control
+
+The `while` command evaluates a condition and continuously executes the assigned block of code as long as the condition evaluates to **verum**.
+
+While flux control follows the syntax below:
+
+
+
+
+`while(<condition>){<statement1>,<statement2>,...}`
+
+
+**Examples:**
+
+1. **Basic while loop:**
+    ```prop
+    counter = 0: int;
+    while(counter < 5) {
+        exhibit("Counter: %d", counter);
+        counter = counter + 1;
+    }
+    ```
+  - Output:
+    ```prop
+    Counter: 0
+    Counter: 1
+    Counter: 2
+    Counter: 3
+    Counter: 4
+    ```
+
+2. **Using a logical condition:**
+    ```prop
+    isRunning = verum : verum;
+    x = 10 : int;
+    while(isRunning) {
+        exhibit("x = %d", x);
+        x = x - 1;
+        branch(x == 0) {
+            isRunning = falsum;
+        }
+    }
+    ```
+  - Output:
+    ```prop
+    x = 10
+    x = 9
+    x = 8
+    x = 7
+    x = 6
+    x = 5
+    x = 4
+    x = 3
+    x = 2
+    x = 1
+    x = 0
+    ```
+
+**Invalid Examples:**
+
+1. **Condition is not a logical value:**
+    ```prop
+    x = 5 : int;
+    while(x) {
+        exhibit("Invalid condition.");
+    }
+    ```
 
 ### For
 
+### For Flux Control
+
+The `for` command is used to iterate a block of code. It requires an initial assignment, a condition, and an update assignment. The variable used in the assignment must be declared prior to the `for` initialization, and the condition must evaluate to a logical type.
+
+For flux control follows the syntax below:
+
+`for(<assignment>,<condition>,<assignment>){<statement1>,<statement2>,...}`
+
+**Examples:**
+
+1. **Basic for loop:**
+    ```prop
+    i : int;
+    for(i = 0, i < 5, i = i + 1) {
+       exhibit("Iteration: %d", i);
+    }
+    ```
+  - Output:
+    ```prop
+    Counter: 0
+    Counter: 1
+    Counter: 2
+    Counter: 3
+    Counter: 4
+    ```
+
+2. **Using a logical condition:**
+    ```prop
+    counter : int;
+    continueLoop = verum : log;
+    for(counter = 0, continueLoop, counter = counter + 1) {
+        exhibit("Counter: %d", counter);
+        branch(counter == 4) {
+            continueLoop = falsum;
+        }
+    }
+
+    ```
+  - Output:
+    ```prop
+    Counter: 0
+    Counter: 1
+    Counter: 2
+    Counter: 3
+    Counter: 4
+
+    ```
+
+**Invalid Examples:**
+
+1. **Condition is not a logical value:**
+    ```prop
+    i : int;
+    for(i = 0, i, i = i + 1) {
+        exhibit("Invalid condition.");  // Error: `i` is not a logical variable
+    }
+    ```
+
+2. **Variable not declared prior to for:**
+    ```prop
+    for(i = 0, i, i = i + 1) {
+        exhibit("Invalid condition.");  // Error: `i` is not a logical variable
+    }
+    ```
 ## Program Example
 
 ## How to Run
