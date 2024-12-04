@@ -666,7 +666,11 @@ For flux control follows the syntax below:
 
 ## How to Run
 
-Run the following command to compile the lexer and parser:
+Run the following command in the `flex_bison` directory to compile the lexer and parser:
+
+```bash
+sudo make
+```
 
 Use the executable created with your test file:
 
