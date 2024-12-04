@@ -315,7 +315,7 @@ The precedence of operations in **Prop** is defined as follows, from the highest
 | 4                 | Addition/Subtraction  | `+`, `-`                                            |
 | 5                 | Relational/Equality   | Equal `==`, greater than `>`, lesser than `<`       |
 | 6                 | Conjunction           | `∧`, `&&`, `and`                                    |
-| 7                 | Disjunction           | `∨`, `||`, `or`                                     |
+| 7                 | Disjunction           | `∨`, `or`                                     |
 | 8                 | Implication           | `->`, `→`, `implies`                                |
 | 9 (Lowest)        | Biconditional         | `↔`, `<->`, `biconditional`                         |
 
