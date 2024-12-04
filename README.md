@@ -339,6 +339,60 @@ Consider the following expression:
 
 Parentheses can be used to override precedence, ensuring that specific parts of an expression are evaluated first.
 
+### Variable Declaration
+
+#### Single Variable Declaration
+
+A variable can be declared without an initial value or with an assignment. The syntax is shown below:
+
+<variable_name>: <type> ; <variable_name> = <value> : <type> ;
+
+**Examples:**
+- `x : int;` (declares an integer variable `x` with no initial value)
+- `isTrue = verum: int;` (declares a logical variable `isTrue` and assigns it the value `verum`)
+
+---
+
+#### Multiple Variable Declaration
+
+
+**Examples:**
+- `int x;` (declares an integer variable `x` with no initial value)
+- `log isTrue = verum;` (declares a logical variable `isTrue` and assigns it the value `verum`)
+
+---
+
+#### Multiple Variable Declaration
+
+Multiple variables can be declared on the same line, either without initial values or with assignments. However, you cannot mix different variable types in the same line. The syntax is shown below:
+
+**Examples:**
+- `a, b, c : log;` (declares three integer variables `a`, `b`, and `c` with no initial values)
+- `x = 1, y, z = 3 : int;` (declares three integer variables and assigns them values)
+- **Invalid:** `a :int, isTrue : log;` (cannot mix `int` and `log` types in the same line)
+
+
+
+#### Multiple Variable Declaration
+
+Multiple variables can be declared with no initial values or with assignments as well. Furthermore, in the same line you can't add two variable types, see the syntax below:
+
+### Variable Assignment
+
+### Terminal Exhibition
+
+### Branch Flux Control
+
+### While
+
+### For
+
+## Program Example
+
+## How to Run
+
+
+
 
 
 
