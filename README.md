@@ -690,7 +690,7 @@ Agora, assumimos ¬Q como verdade (¬Q = verum):
 Com P -> Q e ¬Q, a conclusão lógica é ¬P:
 
 ¬P = falsum.
-  
+```
 
 ## How to Run
 
