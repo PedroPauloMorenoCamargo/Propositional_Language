@@ -303,6 +303,29 @@ Arithmetical operations in **Prop** can only be performed on integers to ensure 
 
 As mentioned above, integer operations can only be performed on integer types and will always result in an integer type. This restriction ensures that our propositional logic subset remains trivial, consistent, and complete.
 
+### Precedence Table
+
+The precedence of operations in **Prop** is defined as follows, from the highest to the lowest level:
+
+| Precedence Level | Type               | Operators                                              |
+|-------------------|--------------------|-------------------------------------------------------|
+| 1 (Highest)       | Atom               | variables, integers, logical types ("verum" or falsum), parenthesis |
+| 2                 | Unary              | unary plus, unary minus, negation |
+| 3                 | Multiplication/Division |  |
+| 4                 | Addition/Subtraction |                                        |
+| 5                 | Relational/Equality |equal, greater than, lesser than                        |
+| 6                 | Conjunction        | |
+| 7                 | Disjunction        ||
+| 8                 | Implication        ||
+| 9 (Lowest)        | Biconditional      ||
+
+### Notes:
+- Operators listed within the same precedence level are evaluated from left to right (associative).
+- Parentheses `()` can always be used to override default precedence and enforce specific evaluation order.
+
+
+
+
 
 
 
