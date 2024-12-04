@@ -169,11 +169,47 @@ The integer type supports both positive and negative integer values.
   3. `¬A`
   4. `~A`
 
+**Equal**:
+
+- The `equal` operator checks if two integer operands are equal. It evaluates to **verum** if the operands are equal, and **falsum** otherwise. This is commonly referred to as the equality operator. The behavior of this operator is illustrated in the image below:
+
+- Additionally, it can be represented in code using the following formats:
+  1. `A == B`
+  2. `A equals B`
+  3. `A = B`
+
+---
+
+**Greater Than**:
+
+- The `greater than` operator checks if the first integer operand is greater than the second integer operand. It evaluates to **verum** if the first operand is greater, and **falsum** otherwise. The behavior of this operator is illustrated in the image below:
+
+
+- Additionally, it can be represented in code using the following formats:
+  1. `A > B`
+  2. `A greater B`
+  3. `A >: B`
+
+---
+
+**Less Than**:
+
+- The `less than` operator checks if the first integer operand is smaller than the second integer operand. It evaluates to **verum** if the first operand is less, and **falsum** otherwise. The behavior of this operator is illustrated in the image below:
+
+- Additionally, it can be represented in code using the following formats:
+  1. `A < B`
+  2. `A less B`
+  3. `A <: B`
+
+
 ##### Characteristics:
 
 Logical operators in **Prop** can be used in binary operations involving `integer-integer`, `boolean-boolean`, and `integer-boolean` combinations. For unary operations, a single `integer` or `boolean` value can be used.
 
 Before the operation occurs, any integer value that is not `0` is mapped to **verum**, and `0` is mapped to **falsum**. The output of the operation is always mapped to the logical type. This mapping ensures consistency, triviality and simplifies logical operations.
+
+Furthermore, as stated above, the operations **equal**, **greater than**, and **less than** can only be used with integer operands. If a boolean value is provided, an error will be raised.
+
 
 1. **Binary Operations:**
    - `1 && 0` → **falsum** (1 is mapped to **verum**, 0 to **falsum**, result is **falsum**)
