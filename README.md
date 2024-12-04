@@ -106,6 +106,8 @@ The logical type accepts either the Latin concepts of truth and falsehood, **`ve
 
 The integer type supports both positive and negative integer values.
 
+---
+
 
 ### Operators
 
@@ -339,6 +341,8 @@ Consider the following expression:
 
 Parentheses can be used to override precedence, ensuring that specific parts of an expression are evaluated first.
 
+---
+
 ### Variable Declaration
 
 #### Single Variable Declaration
@@ -352,8 +356,6 @@ A variable can be declared without an initial value or with an assignment. The s
 **Examples:**
 - `x : int;` (declares an integer variable `x` with no initial value)
 - `isTrue = verum: int;` (declares a logical variable `isTrue` and assigns it the value `verum`)
-
----
 
 #### Multiple Variable Declaration
 
@@ -370,6 +372,9 @@ Multiple variables can be declared on the same line, either without initial valu
 
 **Note:**
 - In a multiple variable declaration it's possible to assign variables and in the same line declare variables without assigning them..
+
+---
+
 
 ### Variable Assignment
 
@@ -447,6 +452,8 @@ or
     exhibit("Values: %d, %l", 10);
     ```
 
+---
+
 
 ### Branch Flux Control
 
@@ -504,6 +511,9 @@ or
     }
 
     ```
+
+---
+
 
 ### While
 
@@ -575,6 +585,9 @@ While flux control follows the syntax below:
     }
     ```
 
+---
+
+
 ### For
 
 ### For Flux Control
@@ -641,6 +654,9 @@ For flux control follows the syntax below:
         exhibit("Invalid condition.");  // Error: `i` is not a logical variable
     }
     ```
+
+---
+
 ## Program Example
 
 ## How to Run
