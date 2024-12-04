@@ -666,7 +666,22 @@ For flux control follows the syntax below:
 
 ## How to Run
 
+Run the following command to compile the lexer and parser:
 
+Use the executable created with your test file:
+
+```bash
+./parser < test_file.prop
+```
+
+This will create an abstract syntax tree as a .yaml file.
+
+Finally, run in the terminal the following command:
+
+```bash
+python3 main.py output.yaml
+
+```
 
 
 
