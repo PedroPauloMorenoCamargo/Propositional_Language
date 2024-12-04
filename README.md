@@ -660,8 +660,37 @@ For flux control follows the syntax below:
 ## Program Examples
 
 ### Modus Tolens Proof
+```prop
+exhibit("Demonstrando o modus tollens:\n");
 
-### Everything
+// Definindo P e Q
+P = 1 : log;
+Q = falsum : log;
+
+// Avaliando P -> Q e negando Q
+exhibit("Se assumimos P como verdade (P = %l) e Q como falso (Q = %l):\n", P, Q);
+exhibit("A implicação P -> Q é: %l.\n", P -> Q);
+exhibit("Agora, assumimos ¬Q como verdade (¬Q = %l):\n", ¬Q);
+
+// Concluímos ¬P
+exhibit("Com P -> Q e ¬Q, a conclusão lógica é ¬P:\n");
+exhibit("¬P = %l.\n", ¬P);
+```
+
+- Output:
+```prop
+Demonstrando o modus tollens:
+
+Se assumimos P como verdade (P = verum) e Q como falso (Q = falsum):
+
+A implicação P -> Q é: falsum.
+
+Agora, assumimos ¬Q como verdade (¬Q = verum):
+
+Com P -> Q e ¬Q, a conclusão lógica é ¬P:
+
+¬P = falsum.
+  
 
 ## How to Run
 
