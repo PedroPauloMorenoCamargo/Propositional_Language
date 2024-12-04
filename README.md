@@ -345,7 +345,9 @@ Parentheses can be used to override precedence, ensuring that specific parts of 
 
 A variable can be declared without an initial value or with an assignment. The syntax is shown below:
 
-<variable_name>: <variable_type> ; <variable_name> = <variable_value> : <variable_type> ;
+<variable_name>: <variable_type> ; 
+
+<variable_name> = <variable_value> : <variable_type> ;
 
 **Examples:**
 - `x : int;` (declares an integer variable `x` with no initial value)
@@ -357,10 +359,17 @@ A variable can be declared without an initial value or with an assignment. The s
 
 Multiple variables can be declared on the same line, either without initial values or with assignments. However, you cannot mix different variable types in the same line. The syntax is shown below:
 
+<variable1>, <variable2>, ..., <variableN>:<variable_type>; 
+
+<variable1> = <value1>,  <variable2> = <value2>, ..., <variableN> = <valueN>: <variable_type> ;
+
 **Examples:**
 - `a, b, c : log;` (declares three integer variables `a`, `b`, and `c` with no initial values)
 - `x = 1, y, z = 3 : int;` (declares three integer variables and assigns them values)
 - **Invalid:** `a :int, isTrue : log;` (cannot mix `int` and `log` types in the same line)
+
+**Note:**
+- In a multiple variable declaration it's possible to assign variables and in the same line declare variables without assigning them..
 
 
 
