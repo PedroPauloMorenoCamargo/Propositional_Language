@@ -345,20 +345,11 @@ Parentheses can be used to override precedence, ensuring that specific parts of 
 
 A variable can be declared without an initial value or with an assignment. The syntax is shown below:
 
-<variable_name>: <type> ; <variable_name> = <value> : <type> ;
+<variable_name>: <variable_type> ; <variable_name> = <variable_value> : <variable_type> ;
 
 **Examples:**
 - `x : int;` (declares an integer variable `x` with no initial value)
 - `isTrue = verum: int;` (declares a logical variable `isTrue` and assigns it the value `verum`)
-
----
-
-#### Multiple Variable Declaration
-
-
-**Examples:**
-- `int x;` (declares an integer variable `x` with no initial value)
-- `log isTrue = verum;` (declares a logical variable `isTrue` and assigns it the value `verum`)
 
 ---
 
