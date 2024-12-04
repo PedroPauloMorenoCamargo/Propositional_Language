@@ -100,8 +100,7 @@ In **Prop**, there are two types: **logical/boolean** and **integer**, represent
 
 #### Logical Type
 
-The logical type accepts either the Latin concepts of truth and falsehood, **`verum`** (true) and **`falsum`** (false), or their corresponding integer representations, **`0`** (false) and **`1`** (true).
-
+The logical type accepts either the Latin concepts of truth and falsehood, **`verum`** (true) and **`falsum`** (false).
 #### Integer Type
 
 The integer type supports both positive and negative integer values.
@@ -551,7 +550,7 @@ While flux control follows the syntax below:
 
 2. **Using a logical condition:**
     ```prop
-    isRunning = verum : verum;
+    isRunning = verum : log;
     x = 10 : int;
     while(isRunning) {
         exhibit("x = %d", x);
@@ -597,14 +596,14 @@ The `for` command is used to iterate a block of code. It requires an initial ass
 
 For flux control follows the syntax below:
 
-`for(<assignment>,<condition>,<assignment>){<statement1>,<statement2>,...}`
+`for(<assignment>;<condition>;<assignment>){<statement1>,<statement2>,...}`
 
 **Examples:**
 
 1. **Basic for loop:**
     ```prop
     i : int;
-    for(i = 0, i < 5, i = i + 1) {
+    for(i = 0; i < 5; i = i + 1) {
        exhibit("Iteration: %d", i);
     }
     ```
@@ -621,7 +620,7 @@ For flux control follows the syntax below:
     ```prop
     counter : int;
     continueLoop = verum : log;
-    for(counter = 0, continueLoop, counter = counter + 1) {
+    for(counter = 0; continueLoop; counter = counter + 1) {
         exhibit("Counter: %d", counter);
         branch(counter == 4) {
             continueLoop = falsum;
@@ -644,7 +643,7 @@ For flux control follows the syntax below:
 1. **Condition is not a logical value:**
     ```prop
     i : int;
-    for(i = 0, i, i = i + 1) {
+    for(i = 0; i; i = i + 1) {
         exhibit("Invalid condition.");  // Error: `i` is not a logical variable
     }
     ```
@@ -661,12 +660,45 @@ For flux control follows the syntax below:
 ## Program Examples
 
 ### Modus Tolens Proof
+```prop
+exhibit("Demonstrando o modus tollens:\n");
 
-### Everything
+// Definindo P e Q
+P = 1 : log;
+Q = falsum : log;
+
+// Avaliando P -> Q e negando Q
+exhibit("Se assumimos P como verdade (P = %l) e Q como falso (Q = %l):\n", P, Q);
+exhibit("A implicação P -> Q é: %l.\n", P -> Q);
+exhibit("Agora, assumimos ¬Q como verdade (¬Q = %l):\n", ¬Q);
+
+// Concluímos ¬P
+exhibit("Com P -> Q e ¬Q, a conclusão lógica é ¬P:\n");
+exhibit("¬P = %l.\n", ¬P);
+```
+
+- Output:
+```prop
+Demonstrando o modus tollens:
+
+Se assumimos P como verdade (P = verum) e Q como falso (Q = falsum):
+
+A implicação P -> Q é: falsum.
+
+Agora, assumimos ¬Q como verdade (¬Q = verum):
+
+Com P -> Q e ¬Q, a conclusão lógica é ¬P:
+
+¬P = falsum.
+```
 
 ## How to Run
 
-Run the following command to compile the lexer and parser:
+Run the following command in the `flex_bison` directory to compile the lexer and parser:
+
+```bash
+sudo make
+```
 
 Use the executable created with your test file:
 
