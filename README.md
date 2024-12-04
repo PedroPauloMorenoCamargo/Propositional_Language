@@ -658,7 +658,11 @@ For flux control follows the syntax below:
 
 ---
 
-## Program Example
+## Program Examples
+
+### Modus Tolens Proof
+
+### Everything
 
 ## How to Run
 
