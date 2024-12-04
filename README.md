@@ -161,7 +161,7 @@ The integer type supports both positive and negative integer values.
 
 - The `negation` operator inverts the logical value of its operand. If the operand is **verum**, the result is **falsum**, and vice versa. This is commonly referred to as the "logical NOT" operator. The behavior of this operator is illustrated in the image below:
 
-  ![Negation Truth Table](/imgs/negation.png)
+  ![Negation Truth Table](/imgs/Negation.png)
 
 - Additionally, it can be represented in code using the following formats:
   1. `!A`
