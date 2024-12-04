@@ -128,7 +128,7 @@ The integer type supports both positive and negative integer values.
 
 - The `implication` operator evaluates to **falsum** only when the first operand is true, and the second operand is false. In all other cases, it evaluates to **verum**. This is illustrated in the image below:
 
-  ![Implication Truth Table](/imgs/implication.jpg)
+  ![Implication Truth Table](/imgs/implication.png)
 
 - Additionally, it can be represented in code using the following formats:
   1. `A -> B`
