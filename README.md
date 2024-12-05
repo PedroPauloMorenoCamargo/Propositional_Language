@@ -1,4 +1,6 @@
-# Propositional_Language
+# Propositional_Language 
+
+#Made by Pedro Paulo Moreno Camargo
 
 ## Objective
 
